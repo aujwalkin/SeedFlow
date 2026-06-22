@@ -108,13 +108,19 @@ $convertedFolder = "C:\Videos\4Converted"
 
 **Library**
 - Source: `C:\Videos\3Converting`
-- Scan interval: 5 minutes (or enable File Watcher)
+- Scan interval: 1 minute (preference)
 
-**Flow — end of flow nodes in order:**
-1. ffmpeg encode node (your AV1 or remux settings)
-2. Move File → `C:\Videos\4Converted\{folder.Orig.Name}`
-3. Delete Original
-4. Delete Source Folder (check "If empty")
+**Flow**
+
+If using my example flow:
+- import flow
+- double-click the "Move File" node, change to your path
+- adjust other nodes to your needs
+
+For your own flow, just ensure these nodes are at the end:
+1. Move File → `C:\Videos\4Converted\`
+2. Delete Original
+3. Delete Source Folder (check "If empty")
 
 ---
 
