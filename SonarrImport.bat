@@ -1,3 +1,3 @@
 @echo off
-powershell.exe -ExecutionPolicy Bypass -File "B:\Plex\Scripts\SonarrImport\SonarrImport.ps1"
+powershell.exe -ExecutionPolicy Bypass -File "C:\Path\To\SonarrImport.ps1"
 exit /b %ERRORLEVEL%
