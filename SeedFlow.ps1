@@ -2,8 +2,8 @@ $source            = "C:\Videos\2Downloaded"
 $dest              = "C:\Videos\3Converting"
 $converted         = "C:\Videos\4Converted"
 $qbitUrl           = "http://localhost:8080"
-$username          = "YOURUSERNAME"
-$password          = "YOURPASSWORD"
+$username          = "USERNAME"
+$password          = "PASSWORD"
 $allowedCategories = @("tv-sonarr", "radarr")
 $targetRatio       = 2.0
 $targetSeedMinutes = 10080
@@ -149,7 +149,7 @@ function Scan-NewFiles {
                     Ratio       = 0
                     SeedMins    = 0
                     State       = "unknown"
-                    Added       = (Get-Date).ToString('HH:mm:ss')
+                    Added       = (Get-Date).ToString('Hmm:ss')
                 }
                 Log "LINKED   | $(Get-TorrentName $relativePath)" "Magenta"
             } catch {
