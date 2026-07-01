@@ -1,7 +1,7 @@
 {
   "Name": "AV1 Automation",
   "Type": 0,
-  "Revision": 18,
+  "Revision": 26,
   "Description": "",
   "Icon": "fas fa-video",
   "Properties": {
@@ -113,7 +113,7 @@
       "ReadOnly": false,
       "FlowElementUid": "FileFlows.VideoNodes.FfmpegBuilderNodes.FfmpegBuilderVideoEncodeSimple",
       "xPos": 80,
-      "yPos": 860,
+      "yPos": 960,
       "Icon": "far fa-file-video",
       "Label": "",
       "Inputs": 1,
@@ -122,7 +122,7 @@
         {
           "Input": 1,
           "Output": 1,
-          "InputNode": "cbc88951-d6a7-4430-b292-213a68a20e45"
+          "InputNode": "ab520e07-0a1c-426b-b5c0-0b55be71354e"
         }
       ],
       "Type": 6,
@@ -131,29 +131,6 @@
         "Encoder": "",
         "Quality": 5,
         "Speed": 1
-      }
-    },
-    {
-      "Uid": "cbc88951-d6a7-4430-b292-213a68a20e45",
-      "ReadOnly": false,
-      "FlowElementUid": "FileFlows.VideoNodes.FfmpegBuilderNodes.FfmpegBuilderExecutor",
-      "xPos": 80,
-      "yPos": 970,
-      "Icon": "far fa-file-video",
-      "Label": "",
-      "Inputs": 1,
-      "Outputs": 2,
-      "OutputConnections": [
-        {
-          "Input": 1,
-          "Output": 1,
-          "InputNode": "f8f43d32-39e7-47e1-a0ab-ef9281cbd36b"
-        }
-      ],
-      "Type": 5,
-      "Model": {
-        "HardwareDecoding": "auto",
-        "Strictness": "experimental"
       }
     },
     {
@@ -175,9 +152,9 @@
       ],
       "Type": 2,
       "Model": {
-        "DestinationPath": "C:\\Videos\\4Converted",
-        "DeleteOriginal": true,
-        "MoveFolder": true,
+        "DestinationPath": "H:\\Videos\\4Converted\\{folder.Orig.Name}\\{file.Orig.FileName}",
+        "DeleteOriginal": false,
+        "MoveFolder": false,
         "AdditionalFiles": []
       }
     },
@@ -186,7 +163,7 @@
       "ReadOnly": false,
       "FlowElementUid": "FileFlows.BasicNodes.File.DeleteOriginal",
       "xPos": 360,
-      "yPos": 1240,
+      "yPos": 1230,
       "Icon": "far fa-trash-alt",
       "Label": "Delete Original",
       "Inputs": 1,
@@ -214,38 +191,13 @@
       "OutputConnections": [
         {
           "Input": 1,
-          "Output": 2,
-          "InputNode": "312868c3-444e-4a0c-b1c2-d4fff44cdd0c"
-        },
-        {
-          "Input": 1,
           "Output": 1,
           "InputNode": "64832d94-bfb5-4a40-8b7b-b4bf8772575a"
-        }
-      ],
-      "Type": 3,
-      "Model": {}
-    },
-    {
-      "Uid": "312868c3-444e-4a0c-b1c2-d4fff44cdd0c",
-      "ReadOnly": false,
-      "FlowElementUid": "FileFlows.VideoNodes.VideoIsMp4",
-      "xPos": 460,
-      "yPos": 270,
-      "Icon": "fas fa-question",
-      "Label": "",
-      "Inputs": 1,
-      "Outputs": 2,
-      "OutputConnections": [
-        {
-          "Input": 1,
-          "Output": 2,
-          "InputNode": "69566bd3-1b3c-480f-a799-ce12c2eaba1e"
         },
         {
           "Input": 1,
-          "Output": 1,
-          "InputNode": "f8f43d32-39e7-47e1-a0ab-ef9281cbd36b"
+          "Output": 2,
+          "InputNode": "f84b9eaa-4296-48ff-9145-e0c4f3952722"
         }
       ],
       "Type": 3,
@@ -255,8 +207,8 @@
       "Uid": "c6732307-b55a-43f9-b81a-cd64d3fe6e51",
       "ReadOnly": false,
       "FlowElementUid": "FileFlows.VideoNodes.FfmpegBuilderNodes.FfmpegBuilderRemuxToMP4",
-      "xPos": 540,
-      "yPos": 470,
+      "xPos": 590,
+      "yPos": 500,
       "Icon": "svg:mp4",
       "Label": "",
       "Inputs": 1,
@@ -277,8 +229,8 @@
       "Uid": "69566bd3-1b3c-480f-a799-ce12c2eaba1e",
       "ReadOnly": false,
       "FlowElementUid": "FileFlows.VideoNodes.FfmpegBuilderNodes.FfmpegBuilderStart",
-      "xPos": 540,
-      "yPos": 380,
+      "xPos": 590,
+      "yPos": 400,
       "Icon": "far fa-file-video",
       "Label": "",
       "Inputs": 1,
@@ -322,8 +274,8 @@
       "Uid": "88ec8e32-14d6-41fb-8046-6cdb8b9ec703",
       "ReadOnly": false,
       "FlowElementUid": "FileFlows.VideoNodes.FfmpegBuilderNodes.FfmpegBuilderRemoveAttachments",
-      "xPos": 540,
-      "yPos": 740,
+      "xPos": 570,
+      "yPos": 770,
       "Icon": "fas fa-paperclip",
       "Label": "",
       "Inputs": 1,
@@ -343,8 +295,8 @@
       "Name": "Remove Unsupported Subtitles",
       "ReadOnly": false,
       "FlowElementUid": "FileFlows.VideoNodes.FfmpegBuilderNodes.FfmpegBuilderSubtitleFormatRemover",
-      "xPos": 540,
-      "yPos": 580,
+      "xPos": 730,
+      "yPos": 600,
       "Icon": "fas fa-comment",
       "Label": "",
       "Inputs": 1,
@@ -375,8 +327,8 @@
       "Uid": "ab520e07-0a1c-426b-b5c0-0b55be71354e",
       "ReadOnly": false,
       "FlowElementUid": "FileFlows.VideoNodes.FfmpegBuilderNodes.FfmpegBuilderExecutor",
-      "xPos": 540,
-      "yPos": 980,
+      "xPos": 390,
+      "yPos": 990,
       "Icon": "far fa-file-video",
       "Label": "",
       "Inputs": 1,
@@ -453,10 +405,143 @@
       "Model": {
         "IfEmpty": true,
         "IncludePatterns": null,
-        "TopMostOnly": false,
-        "Name": "",
-        "Color": ""
+        "TopMostOnly": false
       }
+    },
+    {
+      "Uid": "f84b9eaa-4296-48ff-9145-e0c4f3952722",
+      "ReadOnly": false,
+      "FlowElementUid": "FileFlows.VideoNodes.VideoIsAV1",
+      "xPos": 760,
+      "yPos": 200,
+      "Icon": "fas fa-question",
+      "Label": "",
+      "Inputs": 1,
+      "Outputs": 2,
+      "OutputConnections": [
+        {
+          "Input": 1,
+          "Output": 1,
+          "InputNode": "26fa81dc-a76d-458e-a538-f91174bc1a47"
+        },
+        {
+          "Input": 1,
+          "Output": 2,
+          "InputNode": "05d0a868-f05c-4758-b4b5-83acb07667d6"
+        }
+      ],
+      "Type": 3,
+      "Model": {}
+    },
+    {
+      "Uid": "26fa81dc-a76d-458e-a538-f91174bc1a47",
+      "ReadOnly": false,
+      "FlowElementUid": "FileFlows.VideoNodes.VideoIsMp4",
+      "xPos": 760,
+      "yPos": 300,
+      "Icon": "fas fa-question",
+      "Label": "",
+      "Inputs": 1,
+      "Outputs": 2,
+      "OutputConnections": [
+        {
+          "Input": 1,
+          "Output": 2,
+          "InputNode": "69566bd3-1b3c-480f-a799-ce12c2eaba1e"
+        },
+        {
+          "Input": 1,
+          "Output": 1,
+          "InputNode": "83ca5a4a-b0f2-4196-b9b9-dbbef275d050"
+        }
+      ],
+      "Type": 3,
+      "Model": {}
+    },
+    {
+      "Uid": "83ca5a4a-b0f2-4196-b9b9-dbbef275d050",
+      "ReadOnly": false,
+      "FlowElementUid": "FileFlows.VideoNodes.FfmpegBuilderNodes.FfmpegBuilderStart",
+      "xPos": 820,
+      "yPos": 460,
+      "Icon": "far fa-file-video",
+      "Label": "",
+      "Inputs": 1,
+      "Outputs": 1,
+      "OutputConnections": [
+        {
+          "Input": 1,
+          "Output": 1,
+          "InputNode": "be3ae281-d7ce-464d-a5c3-869b4138ae3d"
+        }
+      ],
+      "Type": 4,
+      "Model": {}
+    },
+    {
+      "Uid": "05d0a868-f05c-4758-b4b5-83acb07667d6",
+      "ReadOnly": false,
+      "FlowElementUid": "FileFlows.VideoNodes.VideoIsMkv",
+      "xPos": 1080,
+      "yPos": 310,
+      "Icon": "fas fa-question",
+      "Label": "",
+      "Inputs": 1,
+      "Outputs": 2,
+      "OutputConnections": [
+        {
+          "Input": 1,
+          "Output": 1,
+          "InputNode": "83ca5a4a-b0f2-4196-b9b9-dbbef275d050"
+        },
+        {
+          "Input": 1,
+          "Output": 2,
+          "InputNode": "f5233d41-8d6a-4b5a-952c-306f5a16310a"
+        }
+      ],
+      "Type": 3,
+      "Model": {}
+    },
+    {
+      "Uid": "2081cd96-574a-4e7f-81ad-0f46d4129372",
+      "ReadOnly": false,
+      "FlowElementUid": "FileFlows.VideoNodes.FfmpegBuilderNodes.FfmpegBuilderRemuxToMkv",
+      "xPos": 1080,
+      "yPos": 540,
+      "Icon": "svg:mkv",
+      "Label": "",
+      "Inputs": 1,
+      "Outputs": 1,
+      "OutputConnections": [
+        {
+          "Input": 1,
+          "Output": 1,
+          "InputNode": "be3ae281-d7ce-464d-a5c3-869b4138ae3d"
+        }
+      ],
+      "Type": 6,
+      "Model": {}
+    },
+    {
+      "Uid": "f5233d41-8d6a-4b5a-952c-306f5a16310a",
+      "ReadOnly": false,
+      "FlowElementUid": "FileFlows.VideoNodes.FfmpegBuilderNodes.FfmpegBuilderStart",
+      "xPos": 1080,
+      "yPos": 450,
+      "Icon": "far fa-file-video",
+      "Label": "",
+      "Inputs": 1,
+      "Outputs": 1,
+      "OutputConnections": [
+        {
+          "Input": 1,
+          "Output": 1,
+          "InputNode": "2081cd96-574a-4e7f-81ad-0f46d4129372"
+        }
+      ],
+      "Type": 4,
+      "Model": {}
     }
   ]
 }
