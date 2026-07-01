@@ -18,9 +18,8 @@ SeedFlow deletes      → qbittorrent + 2Downloaded + 4Converted when seeding do
 
 - `SeedFlow.ps1` — main pipeline script, watches downloads and manages cleanup
 - `RunSeedFlow.bat` — launches SeedFlow.ps1
-- `SonarrImport.ps1` — custom import script for Sonarr/Radarr
-- `SonarrImport.bat` — entry point for Sonarr/Radarr to call SonarrImport.ps1
-- `AV1 Automation.json` — example Fileflows flow to import, which ensures all files are mp4 in either x265 or AV1 (configure to your needs)
+- `4ConvertedCleanup.ps1` — custom script for Sonarr/Radarr
+- `AV1 Automation.json` — example Fileflows flow to import, which ensures all files are either av1 in mp4 or hevc in mkv (configure to your needs)
 
 ---
 
