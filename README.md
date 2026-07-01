@@ -72,6 +72,12 @@ $deleteOnPause     = $true
 
 ---
 
+### runSeedFlow.bat
+
+Edit file path to SeedFlow.ps1's location
+
+---
+
 ## qBittorrent Setup
 
 **Tools → Options → Downloads**
@@ -165,7 +171,7 @@ Same as Sonarr:
 
 ## Running SeedFlow
 
-Double-click `RunPlexFlow.bat` to start. Keep the window open while qBittorrent is active. The log will show each file as it moves through the pipeline:
+Double-click `runSeedFlow.bat` to start. Keep the window open while qBittorrent is active. The log will show each file as it moves through the pipeline:
 
 ```
 SeedFlow started | 22:01:00
