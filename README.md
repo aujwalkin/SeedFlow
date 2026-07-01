@@ -195,5 +195,5 @@ Manual downloads without a Sonarr/Radarr category untouched.
 
 - SeedFlow must be running for the pipeline to function.
 - If restarted mid-pipeline, files already in `2Downloaded` are re-detected and re-linked automatically.
-- The SonarrImport script only acts on files inside `4Converted`
-- This is the solution that worked for me; it may or may not help your situation. You can get away with Using 3Converted as 2Downloaded, but I just prefer to separate them.
+- You can get away with Using 3Converted as 2Downloaded, but I just prefer to separate them.
+- This is the solution that worked for me; it may or may not help your situation.
