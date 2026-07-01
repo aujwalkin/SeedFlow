@@ -7,9 +7,9 @@ Uses hardlinks to segregate Fileflows working folder while qBittorrent keeps see
 ```
 qBittorrent downloads → 2Downloaded
 SeedFlow hardlinks    → 3Converting
-Fileflows encodes     → 4Converted
-Sonarr/Radarr import  ← 4Converted (via SonarrImport script)
-SeedFlow deletes      → qbittorrent + 2Downloaded + 4Converted when seeding done
+Fileflows encodes     → 4Converted, awaits Sonarr/Radarr import
+Sonarr/Radarr import  ← 4Converted, removes converted file after import
+SeedFlow deletes      → qbittorrent + 2Downloaded when seeding done
 ```
 
 ---
@@ -196,4 +196,4 @@ Manual downloads without a Sonarr/Radarr category untouched.
 - SeedFlow must be running for the pipeline to function.
 - If restarted mid-pipeline, files already in `2Downloaded` are re-detected and re-linked automatically.
 - The SonarrImport script only acts on files inside `4Converted`
-- This is the solution that worked for me; it may or may not help your situation.
+- This is the solution that worked for me; it may or may not help your situation. You can get away with Using 3Converted as 2Downloaded, but I just prefer to separate them.
