@@ -71,14 +71,6 @@ $refreshSecs       = 10
 $deleteOnPause     = $true
 ```
 
-### SonarrImport.ps1
-
-Edit the single path at the top:
-
-```powershell
-$convertedFolder = "C:\Videos\4Converted"
-```
-
 ---
 
 ## qBittorrent Setup
@@ -89,14 +81,14 @@ $convertedFolder = "C:\Videos\4Converted"
 - Content Layout: `Create subfolder` (you can alternatively set this inside Sonarr/Radarr if you don't want it globally)
 
 **Tools → Options → BitTorrent**
-- Disable all global seeding limits — set ratio to 0 or unchecked (SeedFlow handles all deletion)
+- Disable all global seeding limits — set ratio to 0 or unchecked (SeedFlow handles deletion)
 
 **Tools → Options → Web UI**
 - Enable the Web UI: ✓
 - Port: `8080`
 - Set a username and password
-- Uncheck Use HTTPS
-- Check Bypass authentication for clients on localhost
+- Uncheck `Use HTTPS`
+- Check `Bypass authentication for clients on localhost`
 
 **Confirm category names** — these must match `$allowedCategories` in PlexFlow.ps1:
 - Sonarr: **Settings → Download Clients → qBittorrent → Category** (default: `tv-sonarr`)
@@ -114,13 +106,13 @@ $convertedFolder = "C:\Videos\4Converted"
 
 If using my example flow:
 - import flow
-- double-click the "Move File" node, change to your path
+- double-click the "Move File" node, change the `Destination Folder` to your path (keeping the end two "{ }" intact)
 - adjust other nodes to your needs
 
 For your own flow, just ensure these nodes are at the end:
-1. Move File → `C:\Videos\4Converted\`
+1. Move File → `C:\Videos\4Converted\{folder.Orig.Name}\{file.Orig.FileName}` or whatever your folder is, ensuring it ends with those parameters
 2. Delete Original
-3. Delete Source Folder (check "If empty")
+3. Delete Source Folder (check `If empty`)
 
 ---
 
@@ -142,10 +134,12 @@ For your own flow, just ensure these nodes are at the end:
 - Remove Completed: ✗
 
 **Settings → Media Management** (enable Show Advanced)
-- Use Hardlinks instead of Copy: ✗
+- Use Hardlinks instead of Copy: ✗ (preference, but SeedFlow hardlinks where needed and enabling won't do anything if you're encoding on a non-storage drive
 - Delete Empty Folders: ✓
-- Import Using Script: ✓
-- Import Script Path: `C:\Path\To\SonarrImport.bat`
+
+**Settings → Connect → Custom Script**
+- Uncheck all except `On File Import` and `On File Upgrade`
+- Path: `C:\Path\To\4ConvertedCleanup.ps1`
 
 ---
 
@@ -160,9 +154,13 @@ Same as Sonarr:
 - Remote Path: `C:\Videos\2Downloaded`
 - Local Path: `C:\Videos\4Converted`
 
-**Settings → Media Management**
-- Import Using Script: ✓
-- Import Script Path: `C:\Path\To\SonarrImport.bat`
+**Settings → Media Management** (enable Show Advanced)
+- Use Hardlinks instead of Copy: ✗
+- Delete Empty Folders: ✓
+
+**Settings → Connect → Custom Script**
+- Uncheck all except `On File Import` and `On File Upgrade`
+- Path: `C:\Path\To\4ConvertedCleanup.ps1`
 
 ---
 
@@ -176,9 +174,8 @@ watching: C:\Videos\2Downloaded
 
 22:01:23 | LINKED   | Clarksons.Farm.S05E07.1080p
 22:10:34 | ENCODING | Clarksons.Farm.S05E07.1080p
-22:42:11 | SEEDING  | Clarksons.Farm.S05E07.1080p | encoded, waiting on qbit
-23:15:00 | DELETED  | Clarksons.Farm.S05E07.1080p | ratio 2.01
-23:15:00 | CLEANED  | Clarksons.Farm.S05E07.1080p | removed from 4Converted
+22:42:11 | SEEDING  | Clarksons.Farm.S05E07.1080p | encoded, imported, deleted converted file from 4Converted, waiting on qbit to delete original
+23:15:00 | DELETED  | Clarksons.Farm.S05E07.1080p | ratio 2.01 reached, original deleted. Only file remaining is the converted file in your end media destination
 ```
 
 ---
